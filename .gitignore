@@ -1,0 +1,11 @@
+build/
+*.exe
+*.o
+*.obj
+*.dll
+*.log
+lms.db
+lms.db-shm
+lms.db-wal
+.env
+.vscode/
