@@ -62,4 +62,14 @@ if(LMS_BUILD_TESTS)
   # Keep test discovery out of the build step: some Windows/MSYS2 setups
   # cannot launch Catch2 discovery automatically. CTest runs the full suite.
   add_test(NAME lms_unit_tests COMMAND lms_tests)
+
+    # ---- SQLite database integration tests -------------------------------
+  add_executable(lms_integration_tests
+    tests/test_database.cpp)
+  target_link_libraries(lms_integration_tests PRIVATE SQLite::SQLite3 Catch2::Catch2WithMain)
+  target_compile_definitions(lms_integration_tests PRIVATE
+    LMS_SCHEMA_PATH="${CMAKE_CURRENT_SOURCE_DIR}/schema/schema.sql")
+  lms_warnings(lms_integration_tests)
+  add_test(NAME lms_database_integration_tests COMMAND lms_integration_tests)
+
 endif()
