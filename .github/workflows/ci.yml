@@ -1,10 +1,15 @@
+
 name: Moderated LMS CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - 'feature/**'
   pull_request:
-    branches: [main]
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -18,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build g++ libsqlite3-dev libssl-dev
+          sudo apt-get install -y cmake ninja-build g++ libsqlite3-dev libssl-dev cppcheck
 
       - name: Configure project
         run: |
@@ -31,3 +36,12 @@ jobs:
 
       - name: Run automated tests
         run: ctest --test-dir build --output-on-failure
+
+      - name: Run static analysis
+        run: |
+          cppcheck \
+            --enable=warning,style,performance,portability \
+            --std=c++17 \
+            --suppress=missingIncludeSystem \
+            -I src src tests
+
