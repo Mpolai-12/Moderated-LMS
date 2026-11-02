@@ -11,3 +11,4 @@ lms.db-wal
 .vscode/
 build-coverage/
 
+.venv/
