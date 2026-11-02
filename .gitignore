@@ -9,3 +9,6 @@ lms.db-shm
 lms.db-wal
 .env
 .vscode/
+build-coverage/
+
+.venv/

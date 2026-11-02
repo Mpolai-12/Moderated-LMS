@@ -1,0 +1,21 @@
+src\app\main.cpp:242:77: style: Condition 's.colInt(6)==1' is always true [knownConditionTrueFalse]
+            fields.passwordHash = s.colText(5); fields.active = s.colInt(6) == 1;
+                                                                            ^
+src\app\main.cpp:239:36: note: Assuming that condition 's.colInt(6)==1' is not redundant
+        if (s.row() && s.colInt(6) == 1 && verifyPassword(password, s.colText(5))) {
+                                   ^
+src\app\main.cpp:242:77: note: Condition 's.colInt(6)==1' is always true
+            fields.passwordHash = s.colText(5); fields.active = s.colInt(6) == 1;
+                                                                            ^
+src\app\main.cpp:204:40: style: struct member 'Session::username' is never used. [unusedStructMember]
+struct Session { int id{}; std::string username; std::string name; std::string role; int departmentId{}; std::unique_ptr<lms::User> actor; };
+                                       ^
+src\domain\MarkCalculator.cpp:8:21: style: The member function 'lms::MarkCalculator::daysLate' can be static. [functionStatic]
+int MarkCalculator::daysLate(TimePoint submittedAt, TimePoint effectiveDeadline) const {
+                    ^
+src\domain\MarkCalculator.hpp:12:9: note: The member function 'lms::MarkCalculator::daysLate' can be static.
+    int daysLate(TimePoint submittedAt, TimePoint effectiveDeadline) const;
+        ^
+src\domain\MarkCalculator.cpp:8:21: note: The member function 'lms::MarkCalculator::daysLate' can be static.
+int MarkCalculator::daysLate(TimePoint submittedAt, TimePoint effectiveDeadline) const {
+                    ^
